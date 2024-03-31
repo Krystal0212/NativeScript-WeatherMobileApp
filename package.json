@@ -14,5 +14,8 @@
     "@nativescript/tailwind": "^2.0.1",
     "@nativescript/webpack": "~5.0.0",
     "tailwindcss": "^3.1.8"
+  },
+  "scripts": {
+    "start": "npm install && npm install @nativescript/geolocation && setup-nativescript-stackblitz && ns preview"
   }
 }

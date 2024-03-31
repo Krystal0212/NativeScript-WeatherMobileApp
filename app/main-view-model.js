@@ -14,6 +14,7 @@ export class HomeViewModel extends Observable {
   }
 
   onGetWeather() {
+    console.log("Getting current weather");
     geolocation.enableLocationRequest()
     .then(() => {
       geolocation.getCurrentLocation({ 
@@ -24,7 +25,8 @@ export class HomeViewModel extends Observable {
         return {latitude: data.latitude,longitude: data.longitude}
       })
       .then(location=>{
-
+        // const lat = 10.8231; // Latitude
+        // const lon = 106.6297;
         const lat = location.latitude; // Latitude
         const lon = location.longitude	; // Longitude
         const apiKey = '672346e591b20d5d0b1e99dc21df440e'; // API Key
