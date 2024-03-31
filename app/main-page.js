@@ -1,6 +1,8 @@
-import { createViewModel } from './main-view-model';
+import { HomeViewModel } from './main-view-model';
 
-export function onNavigatingTo(args) {
+function onNavigatingTo(args) {
   const page = args.object;
-  page.bindingContext = createViewModel();
+  page.bindingContext = new HomeViewModel();
 }
+
+export { onNavigatingTo };
