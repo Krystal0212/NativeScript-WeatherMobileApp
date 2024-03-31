@@ -1,8 +1,13 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
-    <ActionBar title="My App" icon="" />
-    <StackLayout class="p-4">
-        <Label text="Please tap me" class="text-3xl text-center" />
-        <Button text="TAP" tap="{{ onTap }}" class="-primary" />
-        <Label text="{{ message }}" class="text-lg text-center text-gray-400" textWrap="true" />
-    </StackLayout>
+    <ActionBar title="SkySight" icon="" class="action-bar" />
+    <ScrollView class="page-content">
+        <StackLayout class="p-20">
+            <!-- Information Display Section -->
+
+            <!-- Button to Trigger Weather Update -->
+            <!-- Since we're now using lat/long directly, the button will fetch weather data for the pre-defined location -->
+            <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
+            <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" />
+        </StackLayout>
+    </ScrollView>
 </Page>
