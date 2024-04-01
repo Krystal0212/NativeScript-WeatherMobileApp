@@ -1,42 +1,25 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
     <ActionBar title="My App" icon="" />
-    <StackLayout class="p-4">
-        <Label text="Please tap me" class="text-3xl text-center" />
-        <Button text="TAP" tap="{{ onTap }}" class="-primary" />
-        <Label text="{{ message }}" class="text-lg text-center text-gray-400" textWrap="true" />
-    </StackLayout>
-    <TabView androidTabsPosition="bottom">
-        <!-- Tab 1 with Icon -->
-        <TabViewItem>
-            <StackLayout orientation="vertical" horizontalAlignment="center">
-                <Image src="app/assets/star.png" stretch="none" />
-                <Label text="Tab 1" />
+    <GridLayout>
+    <GridLayout rows="*,auto">
+        <StackLayout row="0" backgroundColor="#ccc">
+            <Label text="Your Content" fontSize="30" textAlignment="center"></Label>
+        </StackLayout>
+        <GridLayout row="1" columns="*,*" height="48">
+            <StackLayout col="0">
+                <Image></Image>
+                <Label text="Groups" textAlignment="center"></Label>
             </StackLayout>
-            <StackLayout>
-                <!-- Content for Tab 1 -->
+            <StackLayout col="1">
+                <Image></Image>
+                <Label text="Communities" textAlignment="center"></Label>
             </StackLayout>
-        </TabViewItem>
-
-        <!-- Tab 2 with Star Icon -->
-        <TabViewItem>
-            <StackLayout orientation="vertical" horizontalAlignment="center">
-                <Image src="app/assets/star.png" stretch="none" />
-                <Label text="Tab 2" />
-            </StackLayout>
-            <StackLayout>
-                <!-- Content for Tab 2 -->
-            </StackLayout>
-        </TabViewItem>
-
-        <!-- Tab 3 with Icon -->
-        <TabViewItem>
-            <StackLayout orientation="vertical" horizontalAlignment="center">
-                <Image src="app/assets/star.png" stretch="none" />
-                <Label text="Tab 3" />
-            </StackLayout>
-            <StackLayout>
-                <!-- Content for Tab 3 -->
-            </StackLayout>
-        </TabViewItem>
-    </TabView>
+        </GridLayout>
+    </GridLayout>
+    <GridLayout borderRadius="50%" width="68" height="68" backgroundColor="#ec5281"
+        verticalAlignment="bottom" horizontalAlignment="center" marginBottom="20">
+        <Label text="Post" color="white" verticalAlignment="center"
+            horizontalAlignment="center"></Label>
+    </GridLayout>
+</GridLayout>
 </Page>
