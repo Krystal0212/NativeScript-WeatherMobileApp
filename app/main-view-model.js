@@ -1,5 +1,6 @@
 import { Observable,CoreTypes } from '@nativescript/core';
 import * as geolocation from '@nativescript/geolocation';
+import { BottomNavigationTab, TabSelectedEventData } from '@nativescript-community/ui-material-bottomnavigationbar';
 
 
 export class HomeViewModel extends Observable {
@@ -57,4 +58,5 @@ export class HomeViewModel extends Observable {
       console.log(e)
     });
   }
+
 }

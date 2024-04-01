@@ -1,13 +1,34 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+ navigatingTo="onNavigatingTo"
+ xmlns:SVG="@nativescript-community/ui-svg"
+ xmlns:mdc="@nativescript-community/ui-material-bottomnavigationbar"
+ loaded="pageLoaded">
     <ActionBar title="SkySight" icon="" class="action-bar" />
-    <ScrollView class="page-content">
-        <StackLayout class="p-20">
-            <!-- Information Display Section -->
+    <GridLayout rows="*, auto">
+        <ScrollView class="page-content">
+            <StackLayout class="p-20" row="0">
+                <!-- Information Display Section -->
 
-            <!-- Button to Trigger Weather Update -->
-            <!-- Since we're now using lat/long directly, the button will fetch weather data for the pre-defined location -->
-            <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
-            <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" />
-        </StackLayout>
-    </ScrollView>
+                <!-- Button to Trigger Weather Update -->
+                <!-- Since we're now using lat/long directly, the button will fetch weather data for the pre-defined location -->
+                <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
+                <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" />
+            </StackLayout>
+        </ScrollView>
+        
+        <mdc:BottomNavigationBar
+            row="1"
+            tabs="tabs"
+            activeColor="green"
+            inactiveColor="red"
+            backgroundColor="black"
+            tabSelected="tabSelected">
+            <mdc:BottomNavigationTab title="Star" icon="~/assets/star.png"/>
+
+            <mdc:BottomNavigationTab title="Home" icon="~/assets/home.png"/>
+
+            <mdc:BottomNavigationTab title="Setting" icon="~/assets/settings.png"/>
+        </mdc:BottomNavigationBar>
+
+    </GridLayout>
 </Page>
