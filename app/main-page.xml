@@ -3,15 +3,16 @@
     <GridLayout>
     <GridLayout rows="*,auto">
         <StackLayout row="0" backgroundColor="#ccc">
-            <Label text="Your Content" fontSize="30" textAlignment="center"></Label>
+            <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
+                <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" />
         </StackLayout>
         <GridLayout row="1" columns="*,*" height="48">
             <StackLayout col="0">
-                <Image></Image>
+                <Image src="~/assets/star.png"></Image>
                 <Label text="Groups" textAlignment="center"></Label>
             </StackLayout>
             <StackLayout col="1">
-                <Image></Image>
+                <Image src="~/assets/star.png"></Image>
                 <Label text="Communities" textAlignment="center"></Label>
             </StackLayout>
         </GridLayout>
