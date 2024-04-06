@@ -15,12 +15,12 @@
                 <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" />
             </StackLayout>
 
-            <StackLayout id="searchLocationPage" backgroundColor="#fff"  visibility="{{ searchLocationVisible }}">
-            <!-- <StackLayout id="searchLocationPage" backgroundColor="#fff"  visibility="collapsed"> -->
+            <!-- <StackLayout id="searchLocationPage" backgroundColor="#fff"  visibility="{{ searchLocationVisible }}"> -->
+            <StackLayout id="searchLocationPage" backgroundColor="#fff"  visibility="collapsed">
                 <!-- Left Page -->
             </StackLayout>
-            <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="{{ settingsLocationVisible }}">
-            <!-- <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="collapsed"> -->
+            <!-- <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="{{ settingsLocationVisible }}"> -->
+            <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="collapsed">
                 <!-- Right Page -->
             </StackLayout>
 
