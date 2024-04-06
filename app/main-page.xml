@@ -10,6 +10,7 @@
     <GridLayout backgroundColor="#323219">
         <GridLayout rows="*,auto" >
 
+            <!-- Navigation Pages -->
             <StackLayout id="toggleLayout" backgroundColor="#ccc" verticalAlignment="middle" horizontalAlignment="center">
                 <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="200" />
             </StackLayout>
@@ -23,6 +24,7 @@
                 <!-- Right Page -->
             </StackLayout>
 
+            <!-- Navigation Bar -->
             <GridLayout row="1" columns="*,*,*" height="80">
                 <StackLayout col="0" marginTop="5"  tap="{{ onLocationCheckTap }}" backgroundColor="{{ locationCheckBgColor }}">
                     <Image src="~/assets/search-location.png" width="28" height="38"></Image>
@@ -38,6 +40,7 @@
             </GridLayout>
         </GridLayout>
 
+        <!-- Floating Main Button -->
         <GridLayout borderRadius="50%" width="85" height="85" backgroundColor="#ffffff"
             verticalAlignment="bottom" horizontalAlignment="center" marginBottom="35" tap="{{ onMainPageTap }}">
             <Image src="~/assets/hsr.png" stretch="aspectFill" 
