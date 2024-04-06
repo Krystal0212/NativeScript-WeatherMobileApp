@@ -9,6 +9,8 @@ export class HomeViewModel extends Observable {
     this.mainPageVisible = "visible";
     this.searchLocationVisible = "collapsed";
     this.settingsLocationVisible = "collapsed";
+    this.locationCheckBgColor = "transparent";
+    this.settingsBgColor = "transparent";
   }
 
   convertUnixTimestamp(timestamp) {
@@ -17,6 +19,7 @@ export class HomeViewModel extends Observable {
   }
 
   onGetWeather() {
+    console.log("Getting Weather");
     geolocation.enableLocationRequest()
     .then(() => {
       geolocation.getCurrentLocation({ 
@@ -59,6 +62,23 @@ export class HomeViewModel extends Observable {
     });
   }
 
+  onLocationCheckTap() {
+    console.log("Location Check Tapped");
+    this.showSearchLocationPage();
+    this.highlightLocationCheck();
+  }
+  
+  onMainPageTap() {
+    console.log("Main Page Tapped");
+    this.showMainPage();
+  }
+  
+  onSettingsTap() {
+    console.log("Settings Tapped");
+    this.showSettingsPage();
+    this.highlightSettings();
+  }
+
   showMainPage() {
     this.set("mainPageVisible", "visible");
     this.set("searchLocationVisible", "collapsed");
@@ -66,6 +86,7 @@ export class HomeViewModel extends Observable {
   }
 
   showSearchLocationPage() {
+    console.log("Showing Settings Page");
     this.set("mainPageVisible", "collapsed");
     this.set("searchLocationVisible", "visible");
     this.set("settingsLocationVisible", "collapsed");
@@ -77,9 +98,14 @@ export class HomeViewModel extends Observable {
     this.set("settingsLocationVisible", "visible");
   }
 
-  onMainPageTap() {
-    this.set("mainPageVisible", "visible");
-    this.set("searchLocationVisible", "collapsed");
-    this.set("settingsLocationVisible", "collapsed");
+  highlightLocationCheck() {
+    this.set("locationCheckBgColor", "gray");
+    this.set("settingsBgColor", "transparent");
+  }
+
+  // Method to highlight Settings icon
+  highlightSettings() {
+    this.set("locationCheckBgColor", "transparent");
+    this.set("settingsBgColor", "gray");
   }
 }

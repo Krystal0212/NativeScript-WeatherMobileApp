@@ -14,22 +14,25 @@
                 <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
                 <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" />
             </StackLayout>
-            <StackLayout id="searchLocationPage" backgroundColor="#ccc"  visibility="{{ searchLocationVisible }}">
+
+            <StackLayout id="searchLocationPage" backgroundColor="#fff"  visibility="{{ searchLocationVisible }}">
+            <!-- <StackLayout id="searchLocationPage" backgroundColor="#fff"  visibility="collapsed"> -->
                 <!-- Left Page -->
             </StackLayout>
-            <StackLayout id="settingLocationPage" backgroundColor="#ccc"  visibility="{{ settingsLocationVisible }}">
+            <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="{{ settingsLocationVisible }}">
+            <!-- <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="collapsed"> -->
                 <!-- Right Page -->
             </StackLayout>
 
             <GridLayout row="1" columns="*,*,*" height="80">
-                <StackLayout col="0" marginTop="5"  tap="{{ onLocationCheckTap }}">
+                <StackLayout col="0" marginTop="5"  tap="{{ onLocationCheckTap }}" backgroundColor="{{ locationCheckBgColor }}">
                     <Image src="~/assets/search-location.png" width="28" height="38"></Image>
                     <Label text="Location Check" textAlignment="center" fontSize="10"></Label>
                 </StackLayout>
                 <StackLayout col="1" marginTop="5">
                     <Label text="Current Location" textAlignment="center" fontSize="10" marginTop="38"></Label>
                 </StackLayout>
-                <StackLayout col="2" marginTop="5" tap="{{ onSettingsTap }}">
+                <StackLayout col="2" marginTop="5" tap="{{ onSettingsTap }}" backgroundColor="{{ settingsBgColor }}">
                     <Image src="~/assets/settings.png" width="28" height="38"></Image>
                     <Label text="Settings" textAlignment="center" fontSize="10"></Label>
                 </StackLayout>
