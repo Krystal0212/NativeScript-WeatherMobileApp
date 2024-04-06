@@ -10,17 +10,16 @@
     <GridLayout backgroundColor="#323219">
         <GridLayout rows="*,auto" >
 
-            <StackLayout id="toggleLayout" backgroundColor="#ccc">
-                <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
-                <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" />
+            <StackLayout id="toggleLayout" backgroundColor="#ccc" verticalAlignment="middle" horizontalAlignment="center">
+                <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="200" />
             </StackLayout>
 
-            <!-- <StackLayout id="searchLocationPage" backgroundColor="#fff"  visibility="{{ searchLocationVisible }}"> -->
-            <StackLayout id="searchLocationPage" backgroundColor="#fff"  visibility="collapsed">
-                <!-- Left Page -->
+            <StackLayout id="searchLocationPage" backgroundColor="#03396c"  visibility="{{ searchLocationVisible }}">
+                <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
+                <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="200" />
             </StackLayout>
-            <!-- <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="{{ settingsLocationVisible }}"> -->
-            <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="collapsed">
+
+            <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="{{ settingsLocationVisible }}">
                 <!-- Right Page -->
             </StackLayout>
 
