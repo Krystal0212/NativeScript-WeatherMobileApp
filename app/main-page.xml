@@ -9,12 +9,20 @@
     </ActionBar>
     <GridLayout backgroundColor="#323219">
         <GridLayout rows="*,auto" >
-            <StackLayout row="0" backgroundColor="#ccc">
+
+            <StackLayout id="toggleLayout" backgroundColor="#ccc">
                 <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
                 <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" />
             </StackLayout>
+            <StackLayout id="searchLocationPage" backgroundColor="#ccc"  visibility="{{ searchLocationVisible }}">
+                <!-- Left Page -->
+            </StackLayout>
+            <StackLayout id="settingLocationPage" backgroundColor="#ccc"  visibility="{{ settingsLocationVisible }}">
+                <!-- Right Page -->
+            </StackLayout>
+
             <GridLayout row="1" columns="*,*,*" height="80">
-                <StackLayout col="0" marginTop="5" tap="{{ onLocationCheckTap }}">
+                <StackLayout col="0" marginTop="5"  tap="{{ onLocationCheckTap }}">
                     <Image src="~/assets/search-location.png" width="28" height="38"></Image>
                     <Label text="Location Check" textAlignment="center" fontSize="10"></Label>
                 </StackLayout>
@@ -29,7 +37,7 @@
         </GridLayout>
 
         <GridLayout borderRadius="50%" width="85" height="85" backgroundColor="#ffffff"
-            verticalAlignment="bottom" horizontalAlignment="center" marginBottom="35">
+            verticalAlignment="bottom" horizontalAlignment="center" marginBottom="35" tap="{{ onMainPageTap }}">
             <Image src="~/assets/hsr.png" stretch="aspectFill" 
                 verticalAlignment="center" horizontalAlignment="center"></Image>
         </GridLayout>

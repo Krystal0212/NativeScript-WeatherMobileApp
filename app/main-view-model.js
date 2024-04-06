@@ -6,6 +6,9 @@ export class HomeViewModel extends Observable {
   constructor() {
     super();
     this.weatherInfo = '';
+    this.mainPageVisible = "visible";
+    this.searchLocationVisible = "collapsed";
+    this.settingsLocationVisible = "collapsed";
   }
 
   convertUnixTimestamp(timestamp) {
@@ -54,5 +57,29 @@ export class HomeViewModel extends Observable {
     .catch( e => {
       console.log(e)
     });
+  }
+
+  showMainPage() {
+    this.set("mainPageVisible", "visible");
+    this.set("searchLocationVisible", "collapsed");
+    this.set("settingsLocationVisible", "collapsed");
+  }
+
+  showSearchLocationPage() {
+    this.set("mainPageVisible", "collapsed");
+    this.set("searchLocationVisible", "visible");
+    this.set("settingsLocationVisible", "collapsed");
+  }
+
+  showSettingsPage() {
+    this.set("mainPageVisible", "collapsed");
+    this.set("searchLocationVisible", "collapsed");
+    this.set("settingsLocationVisible", "visible");
+  }
+
+  onMainPageTap() {
+    this.set("mainPageVisible", "visible");
+    this.set("searchLocationVisible", "collapsed");
+    this.set("settingsLocationVisible", "collapsed");
   }
 }

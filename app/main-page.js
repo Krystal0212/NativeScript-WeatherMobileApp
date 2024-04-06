@@ -7,10 +7,16 @@ export function onNavigatingTo(args) {
 
 export function onLocationCheckTap(args) {
   const page = args.object.page;
-  page.bindingContext.set("alignment", "left");
+  viewModel.showSearchLocationPage();
+  
+}
+
+export function onMainPageTap(args) {
+  const viewModel = args.object.bindingContext;
+  viewModel.onMainPageTap();
 }
 
 export function onSettingsTap(args) {
   const page = args.object.page;
-  page.bindingContext.set("alignment", "right");
+  viewModel.showSettingsPage();
 }
