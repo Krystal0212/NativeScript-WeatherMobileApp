@@ -1,4 +1,6 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:PageLayout="PageLayout" navigatingTo="onNavigatingTo">
+    
     <ActionBar title="My App" icon="" />
     <StackLayout class="p-4">
         <Label text="Please tap me" class="text-3xl text-center" />
@@ -7,36 +9,13 @@
     </StackLayout>
     <TabView androidTabsPosition="bottom">
         <!-- Tab 1 with Icon -->
-        <TabViewItem>
-            <StackLayout orientation="vertical" horizontalAlignment="center">
-                <Image src="app/assets/star.png" stretch="none" />
-                <Label text="Tab 1" />
-            </StackLayout>
-            <StackLayout>
-                <!-- Content for Tab 1 -->
-            </StackLayout>
-        </TabViewItem>
+        <PageLayout:leftTab/>
 
         <!-- Tab 2 with Star Icon -->
-        <TabViewItem>
-            <StackLayout orientation="vertical" horizontalAlignment="center">
-                <Image src="app/assets/star.png" stretch="none" />
-                <Label text="Tab 2" />
-            </StackLayout>
-            <StackLayout>
-                <!-- Content for Tab 2 -->
-            </StackLayout>
-        </TabViewItem>
+        <PageLayout:midTab/>
 
         <!-- Tab 3 with Icon -->
-        <TabViewItem>
-            <StackLayout orientation="vertical" horizontalAlignment="center">
-                <Image src="app/assets/star.png" stretch="none" />
-                <Label text="Tab 3" />
-            </StackLayout>
-            <StackLayout>
-                <!-- Content for Tab 3 -->
-            </StackLayout>
-        </TabViewItem>
+        <PageLayout:rightTab/>
+
     </TabView>
 </Page>
