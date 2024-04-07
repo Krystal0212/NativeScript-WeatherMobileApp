@@ -1,0 +1,3 @@
+<StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="{{ settingsLocationVisible }}">
+    <!-- Right Page -->
+</StackLayout>

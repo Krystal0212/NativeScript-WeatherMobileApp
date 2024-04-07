@@ -1,0 +1,13 @@
+<GridLayout row="1" columns="*,*,*" height="80">
+    <StackLayout col="0" marginTop="5"  tap="{{ onLocationCheckTap }}" backgroundColor="{{ locationCheckBgColor }}">
+        <Image src="~/assets/search-location.png" width="28" height="38"></Image>
+        <Label text="Location Check" textAlignment="center" fontSize="10"></Label>
+    </StackLayout>
+    <StackLayout col="1" marginTop="5">
+        <Label text="Current Location" textAlignment="center" fontSize="10" marginTop="38"></Label>
+    </StackLayout>
+    <StackLayout col="2" marginTop="5" tap="{{ onSettingsTap }}" backgroundColor="{{ settingsBgColor }}">
+        <Image src="~/assets/settings.png" width="28" height="38"></Image>
+        <Label text="Settings" textAlignment="center" fontSize="10"></Label>
+    </StackLayout>
+</GridLayout>

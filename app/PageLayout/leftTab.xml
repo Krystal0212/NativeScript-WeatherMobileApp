@@ -1,9 +1,0 @@
-<TabViewItem>
-    <StackLayout orientation="vertical" horizontalAlignment="center">
-        <Image src="app/assets/star.png" stretch="none" />
-        <Label text="Tab 1" />
-    </StackLayout>
-    <StackLayout>
-        <!-- Content for Tab 1 -->
-    </StackLayout>
-</TabViewItem>

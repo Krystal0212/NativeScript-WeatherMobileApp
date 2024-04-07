@@ -1,0 +1,4 @@
+<StackLayout id="searchLocationPage" backgroundColor="#03396c"  visibility="{{ searchLocationVisible }}">
+    <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
+    <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="200" />
+</StackLayout>
