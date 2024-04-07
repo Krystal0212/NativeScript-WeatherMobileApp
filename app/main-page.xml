@@ -4,7 +4,7 @@
             <Label text="{{ batteryLevel }}" class="info-label" />
         </ActionItem>
         <ActionItem>
-            <Image src="~/assets/battery-status/half-battery.png" width="28" height="38" />
+            <Image src="{{ iconPath }}" width="28" height="38" />
         </ActionItem>
         <ActionItem>
             <Image src="" width="12"/>

@@ -15,6 +15,7 @@ export class HomeViewModel extends Observable {
 
     this.titleName = "SkySight";
     this.batteryLevel = '25%';
+    this.iconPath = "";
     this.checkBatteryLevel();
 
     this.loadingIndicator = new LoadingIndicator();
@@ -45,6 +46,17 @@ export class HomeViewModel extends Observable {
 
   updateBatteryLevel(level) {
     console.log(`Battery level in ViewModel: ${level}%`);
+    if (level < 25) {
+      this.set('iconPath', "~/assets/battery-status/low-battery.png");
+    } else if (level < 50) {
+      this.set('iconPath', "~/assets/battery-status/half-battery.png");
+    } else if (level < 75) {
+      this.set('iconPath', "~/assets/battery-status/battery.png");
+    } else {
+      this.set('iconPath', "~/assets/battery-status/full-battery.png");
+    }
+    console.log(`${this.iconPath}`);
+
     this.set('batteryLevel', `${level}%`);
   }
 
