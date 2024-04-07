@@ -72,9 +72,11 @@ export class HomeViewModel extends Observable {
     const year = date.getFullYear();
 
     // Formatting the time part
-    const optionsForTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-    const formattedTime = date.toLocaleTimeString('en-US', optionsForTime);
-  
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+    const formattedTime = `${hours % 12 || 12}:${minutes}:${seconds} ${hours < 12 ? 'AM' : 'PM'}`;
+
     // Removing 'AM/PM' part if not needed
     // const timeWithoutAmPm = formattedTime.replace(/AM|PM/, '').trim();
   
