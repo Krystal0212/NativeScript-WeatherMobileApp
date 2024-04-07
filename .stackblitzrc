@@ -1,5 +1,5 @@
 {
   "installDependencies": true,
   "compileTrigger": "save",
-  "startCommand": "setup-nativescript-stackblitz && ns preview"
+  "startCommand": "setup-nativescript-stackblitz && npm install @nstudio/nativescript-loading-indicator && ns preview"
 }

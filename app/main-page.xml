@@ -1,5 +1,8 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
-    <ActionBar backgroundColor="#323219">
+    <ActionBar title="{{ titleName }}" backgroundColor="#323219">
+        <ActionItem>
+            <Label text="{{ batteryLevel }}" class="info-label" />
+        </ActionItem>
         <ActionItem>
             <Image src="~/assets/battery-status/half-battery.png" width="28" height="38" />
         </ActionItem>
@@ -12,15 +15,20 @@
 
             <!-- Navigation Pages -->
             <StackLayout id="toggleLayout" backgroundColor="#ccc" verticalAlignment="middle" horizontalAlignment="center">
-                <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="200" />
+                <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="250" />
             </StackLayout>
 
-            <StackLayout id="searchLocationPage" backgroundColor="#03396c"  visibility="{{ searchLocationVisible }}">
-                <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
-                <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="200" />
-            </StackLayout>
+            <GridLayout id="searchLocationPage" backgroundColor="#03396c" visibility="{{ searchLocationVisible }}" rows="auto, *" columns="*">
+            <!-- Button in the first row -->
+            <Button row="0" col="0" text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
 
-            <StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="{{ settingsLocationVisible }}">
+            <!-- Label in the second row, centered -->
+            <StackLayout row="1" col="0" horizontalAlignment="center" verticalAlignment="middle">
+                <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="250" horizontalAlignment="center" />
+            </StackLayout>
+        </GridLayout>
+
+            <StackLayout id="settingLocationPage" backgroundColor="#ccc"  visibility="{{ settingsLocationVisible }}">
                 <!-- Right Page -->
             </StackLayout>
 
