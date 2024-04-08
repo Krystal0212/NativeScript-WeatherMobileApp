@@ -1,5 +1,5 @@
 {
   "installDependencies": true,
   "compileTrigger": "save",
-  "startCommand": "setup-nativescript-stackblitz && ns preview"
+  "startCommand": "npm install && npm install @nativescript/geolocation && setup-nativescript-stackblitz && ns preview"
 }

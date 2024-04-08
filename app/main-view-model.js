@@ -256,7 +256,7 @@ export class HomeViewModel extends Observable {
     this.showMainPage();
     this.unhighlightAll();
   }
-  
+
   onSettingsTap() {
     console.log("Settings Tapped");
     this.showSettingsPage();
