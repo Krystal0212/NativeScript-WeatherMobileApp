@@ -1,10 +1,10 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
-    <ActionBar title="{{ titleName }}" backgroundColor="#323219">
+    <ActionBar title="{{ titleName }}" backgroundColor="#323219" style="color: white; font-size: 17px">
         <ActionItem>
-            <Label text="{{ batteryLevel }}" class="info-label" />
+            <Label text="{{ batteryLevel }}" style="color: white; font-size: 17px;" />
         </ActionItem>
         <ActionItem>
-            <Image src="{{ iconPath }}" width="28" height="38" />
+            <Image src="{{ iconPath }}" width="38" height="38" />
         </ActionItem>
         <ActionItem>
             <Image src="" width="12"/>
