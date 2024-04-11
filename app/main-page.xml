@@ -1,8 +1,11 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
-xmlns:nav="PageLayout/BottomNav"
-xmlns:tab="PageLayout/Tabs"
-navigatingTo="onNavigatingTo">
-    <ActionBar title="{{ titleName }}" backgroundColor="#323219" style="color: white; font-size: 17px">
+    xmlns:nav="PageLayout/BottomNav"
+    xmlns:tab="PageLayout/Tabs"
+    xmlns:Gif="nativescript-gif" 
+    loaded="pageLoaded"
+    navigatingTo="onNavigatingTo">
+    
+    <ActionBar title="{{ titleName }}" backgroundColor="#18848e" style="color: white; font-size: 17px">
         <ActionItem>
             <Label text="{{ batteryLevel }}" style="color: white; font-size: 17px;" />
         </ActionItem>
@@ -14,7 +17,7 @@ navigatingTo="onNavigatingTo">
         </ActionItem>
     </ActionBar>
     
-    <GridLayout backgroundColor="#323219">
+    <GridLayout backgroundColor="#ccc">
         <GridLayout rows="*,auto" >
 
             <!-- Navigation Pages -->

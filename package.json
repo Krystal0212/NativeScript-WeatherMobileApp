@@ -10,7 +10,8 @@
     "@nativescript/core": "~8.5.0",
     "@nativescript/geolocation": "^8.3.1",
     "@nativescript/theme": "~3.0.2",
-    "@nstudio/nativescript-loading-indicator": "^4.3.4"
+    "@nstudio/nativescript-loading-indicator": "^4.3.4",
+    "nativescript-gif": "^5.0.0"
   },
   "devDependencies": {
     "@nativescript/preview-cli": "^1.0.13",
