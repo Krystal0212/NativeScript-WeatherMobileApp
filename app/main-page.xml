@@ -12,14 +12,14 @@
         </ActionItem>
     </ActionBar>
     <GridLayout backgroundColor="#000">
-            <GridLayout rows="*,auto" backgroundColor="#ccc">
-                <!-- Navigation Pages -->
+        <GridLayout rows="*,auto" backgroundColor="#ccc">
+            <!-- Navigation Pages -->
             <tabs:leftTab/>
             <tabs:midTab/>
             <tabs:rightTab/>
             <!-- Navigation Bar -->
             <navBar:Nav/>
-                </GridLayout>
+        </GridLayout>
 
         <!-- Floating Main Button -->
         <GridLayout borderRadius="50%" width="85" height="85" backgroundColor="#000"
