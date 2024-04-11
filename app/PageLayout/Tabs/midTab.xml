@@ -1,9 +1,3 @@
-<StackLayout id="toggleLayout" backgroundColor="#28a99e" verticalAlignment="middle" horizontalAlignment="center">
-    <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="100%">
-        <Image src="~/assets/rainsky.gif" animated="true" stretch="aspectFit" row="0" col="0" marginBottom="70%"/>
-        <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="80%" marginTop="20%">
-            <!-- <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="200" /> -->
-            <Label  text="text here askdjhnaoldjanljdkawndolkjawbdnoiajwhdnlakdnalwkjdnawlkdjnaklsdnmlkwhbkad" class="text" textWrap="true" width="200" />
-        </GridLayout>
-    </GridLayout>
+<StackLayout id="toggleLayout" backgroundColor="#ccc" verticalAlignment="middle" horizontalAlignment="center">
+  <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="250" />
 </StackLayout>

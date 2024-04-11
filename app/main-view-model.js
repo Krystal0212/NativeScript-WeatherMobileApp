@@ -1,59 +1,62 @@
-import { Utils, Observable,CoreTypes, Application } from '@nativescript/core';
+import { Utils, Observable, CoreTypes, Application } from '@nativescript/core';
 import * as geolocation from '@nativescript/geolocation';
-const LoadingIndicator = require('@nstudio/nativescript-loading-indicator').LoadingIndicator;
+const LoadingIndicator =
+  require('@nstudio/nativescript-loading-indicator').LoadingIndicator;
 const Mode = require('@nstudio/nativescript-loading-indicator').Mode;
 
 export class HomeViewModel extends Observable {
   constructor() {
     super();
     this.weatherInfo = '';
-    this.mainPageVisible = "visible";
-    this.searchLocationVisible = "collapsed";
-    this.settingsLocationVisible = "collapsed";
-    this.locationCheckBgColor = "transparent";
-    this.settingsBgColor = "transparent";
+    this.mainPageVisible = 'visible';
+    this.searchLocationVisible = 'collapsed';
+    this.settingsLocationVisible = 'collapsed';
+    this.locationCheckBgColor = 'transparent';
+    this.settingsBgColor = 'transparent';
 
-    this.titleName = "SkySight";
+    this.titleName = 'SkySight';
     this.batteryLevel = '25%';
-    this.iconPath = "";
+    this.iconPath = '';
     this.checkBatteryLevel();
 
     this.loadingIndicator = new LoadingIndicator();
     this.loadingWeather();
-  
   }
 
   checkBatteryLevel() {
     if (Application.android) {
       // console.log(`Getting Current Battery Level`);
       try {
-        const context = Utils.android.getApplicationContext();;
+        const context = Utils.android.getApplicationContext();
         const BatteryManager = android.os.BatteryManager;
-        const batteryManager = context.getSystemService(android.content.Context.BATTERY_SERVICE);
+        const batteryManager = context.getSystemService(
+          android.content.Context.BATTERY_SERVICE
+        );
 
         if (batteryManager) {
-          const batteryLevel = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+          const batteryLevel = batteryManager.getIntProperty(
+            BatteryManager.BATTERY_PROPERTY_CAPACITY
+          );
           this.updateBatteryLevel(batteryLevel);
         } else {
-          console.log("Unable to access Battery Manager");
+          console.log('Unable to access Battery Manager');
         }
       } catch (error) {
-        console.error("Error retrieving battery level:", error);
+        console.error('Error retrieving battery level:', error);
       }
-      
     }
   }
 
   updateBatteryLevel(level) {
     console.log(`Battery level in ViewModel: ${level}%`);
     if (level < 25) {
-      this.set('iconPath', "~/assets/battery-status/low-battery.png");
+      this.set('iconPath', '~/assets/battery-status/low-battery.png');
     } else if (level < 50) {
-      this.set('iconPath', "~/assets/battery-status/half-battery.png");
+      this.set('iconPath', '~/assets/battery-status/half-battery.png');
     } else if (level < 75) {
-      this.set('iconPath', "~/assets/battery-status/battery.png");
+      this.set('iconPath', '~/assets/battery-status/battery.png');
     } else {
-      this.set('iconPath', "~/assets/battery-status/full-battery.png");
+      this.set('iconPath', '~/assets/battery-status/full-battery.png');
     }
     console.log(`${this.iconPath}`);
 
@@ -62,9 +65,30 @@ export class HomeViewModel extends Observable {
 
   convertUnixTimestamp(timestamp) {
     const date = new Date(timestamp * 1000);
-    
-    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    const weekdays = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ];
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
 
     const dayOfWeek = weekdays[date.getDay()];
     const month = months[date.getMonth()];
@@ -75,11 +99,13 @@ export class HomeViewModel extends Observable {
     const hours = date.getHours();
     const minutes = date.getMinutes().toString().padStart(2, '0');
     const seconds = date.getSeconds().toString().padStart(2, '0');
-    const formattedTime = `${hours % 12 || 12}:${minutes}:${seconds} ${hours < 12 ? 'AM' : 'PM'}`;
+    const formattedTime = `${hours % 12 || 12}:${minutes}:${seconds} ${
+      hours < 12 ? 'AM' : 'PM'
+    }`;
 
     // Removing 'AM/PM' part if not needed
     // const timeWithoutAmPm = formattedTime.replace(/AM|PM/, '').trim();
-  
+
     // Adding ordinal suffix to the day
     const day = date.getDate();
     let suffix;
@@ -87,16 +113,23 @@ export class HomeViewModel extends Observable {
       suffix = 'th';
     } else {
       switch (day % 10) {
-        case 1:  suffix = 'st'; break;
-        case 2:  suffix = 'nd'; break;
-        case 3:  suffix = 'rd'; break;
-        default: suffix = 'th';
+        case 1:
+          suffix = 'st';
+          break;
+        case 2:
+          suffix = 'nd';
+          break;
+        case 3:
+          suffix = 'rd';
+          break;
+        default:
+          suffix = 'th';
       }
     }
-    
+
     const formattedDateWithOrdinal = `${dayOfWeek} - ${dayOfMonth}${suffix} ${month} ${year}`;
     // console.log(formattedDateWithOrdinal);
-  
+
     return `Time : ${formattedTime}\nDate : ${formattedDateWithOrdinal}`;
   }
 
@@ -123,65 +156,66 @@ export class HomeViewModel extends Observable {
   }
 
   loadingWeather() {
-    console.log("Loading Weather");
+    console.log('Loading Weather');
 
     this.loadingIndicator.show(this.loadingOptions);
 
-    geolocation.enableLocationRequest()
-    .then(() => {
-      console.log("Geolocation: Permission granted");
-      geolocation.getCurrentLocation({ 
-        desiredAccuracy: CoreTypes.Accuracy.high,
-        maximumAge: 5000, 
-        timeout: 20000 
-      })
-      .then((data) => {
-        // console.log("Geolocation: Received location");
-        return {latitude: data.latitude, longitude: data.longitude};
-      })
-      .then(location => {
-        const lat = location.latitude; // Latitude
-        const lon = location.longitude; // Longitude
-        console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
-        const apiKey = '672346e591b20d5d0b1e99dc21df440e'; // API Key
-        
-        return fetch(
-          `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
-        );
-      })
-      .then((response) => {
-        // console.log("Weather data response received");
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Weather data converted");
+    geolocation
+      .enableLocationRequest()
+      .then(() => {
+        console.log('Geolocation: Permission granted');
+        geolocation
+          .getCurrentLocation({
+            desiredAccuracy: CoreTypes.Accuracy.high,
+            maximumAge: 5000,
+            timeout: 20000,
+          })
+          .then((data) => {
+            // console.log("Geolocation: Received location");
+            return { latitude: data.latitude, longitude: data.longitude };
+          })
+          .then((location) => {
+            const lat = location.latitude; // Latitude
+            const lon = location.longitude; // Longitude
+            console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
+            const apiKey = '672346e591b20d5d0b1e99dc21df440e'; // API Key
 
-        const timezone = data.timezone; // "Asia/Ho_Chi_Minh"
-        this.set('titleName', timezone.split('/').pop().replace(/_/g, ' '));
+            return fetch(
+              `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
+            );
+          })
+          .then((response) => {
+            // console.log("Weather data response received");
+            return response.json();
+          })
+          .then((data) => {
+            console.log('Weather data converted');
 
-        const temperature = data.current
-          ? (data.current.temp - 273.15).toFixed(2)
-          : 'N/A';
-        const currentDateTime = this.convertUnixTimestamp(data.current.dt);
-        this.set(
-          'weatherInfo',
-          `Current Temperature: ${temperature}°C\n${currentDateTime}`
-        );
+            const timezone = data.timezone; // "Asia/Ho_Chi_Minh"
+            this.set('titleName', timezone.split('/').pop().replace(/_/g, ' '));
+
+            const temperature = data.current
+              ? (data.current.temp - 273.15).toFixed(2)
+              : 'N/A';
+            const currentDateTime = this.convertUnixTimestamp(data.current.dt);
+            this.set(
+              'weatherInfo',
+              `Current Temperature: ${temperature}°C\n${currentDateTime}`
+            );
+          })
+          .catch((err) => {
+            console.error('Error fetching weather data: ', err);
+            this.set('weatherInfo', 'Error fetching data.');
+          })
+          .finally(() => {
+            console.log('Loading Weather: Finished');
+            this.loadingIndicator.hide();
+          });
       })
-      .catch((err) => {
-        console.error("Error fetching weather data: ", err);
-        this.set('weatherInfo', 'Error fetching data.');
-      })
-      .finally(() => {
-        console.log("Loading Weather: Finished");
+      .catch((e) => {
+        console.error('Geolocation error: ', e);
         this.loadingIndicator.hide();
       });
-    })
-    .catch(e => {
-      console.error("Geolocation error: ", e);
-      this.loadingIndicator.hide();
-    });
-
   }
 
   onGetWeather() {
@@ -189,112 +223,114 @@ export class HomeViewModel extends Observable {
 
     this.loadingIndicator.show(this.loadingOptions);
 
-    geolocation.enableLocationRequest()
-    .then(() => {
-      console.log("Geolocation: Permission granted");
-      geolocation.getCurrentLocation({ 
-        desiredAccuracy: CoreTypes.Accuracy.high,
-        maximumAge: 5000, 
-        timeout: 20000 
-      })
-      .then((data) => {
-        console.log("Geolocation: Received location", data);
-        return {latitude: data.latitude, longitude: data.longitude};
-      })
-      .then(location => {
-        const lat = location.latitude; // Latitude
-        const lon = location.longitude; // Longitude
-        console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
-        const apiKey = '672346e591b20d5d0b1e99dc21df440e'; // API Key
-        
-        return fetch(
-          `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
-        );
-      })
-      .then((response) => {
-        console.log("Weather data response received");
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Weather data processed");
+    geolocation
+      .enableLocationRequest()
+      .then(() => {
+        console.log('Geolocation: Permission granted');
+        geolocation
+          .getCurrentLocation({
+            desiredAccuracy: CoreTypes.Accuracy.high,
+            maximumAge: 5000,
+            timeout: 20000,
+          })
+          .then((data) => {
+            console.log('Geolocation: Received location', data);
+            return { latitude: data.latitude, longitude: data.longitude };
+          })
+          .then((location) => {
+            const lat = location.latitude; // Latitude
+            const lon = location.longitude; // Longitude
+            console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
+            const apiKey = '672346e591b20d5d0b1e99dc21df440e'; // API Key
 
-        const timezone = data.timezone; // "Asia/Ho_Chi_Minh"
-        this.set('titleName', timezone.split('/').pop().replace(/_/g, ' '));
+            return fetch(
+              `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
+            );
+          })
+          .then((response) => {
+            console.log('Weather data response received');
+            return response.json();
+          })
+          .then((data) => {
+            console.log('Weather data processed');
 
-        const temperature = data.current
-          ? (data.current.temp - 273.15).toFixed(2)
-          : 'N/A';
-        const currentDateTime = this.convertUnixTimestamp(data.current.dt);
-        this.set(
-          'weatherInfo',
-          `Current Temperature: ${temperature}°C, Time: ${currentDateTime}`
-        );
+            const timezone = data.timezone; // "Asia/Ho_Chi_Minh"
+            this.set('titleName', timezone.split('/').pop().replace(/_/g, ' '));
+
+            const temperature = data.current
+              ? (data.current.temp - 273.15).toFixed(2)
+              : 'N/A';
+            const currentDateTime = this.convertUnixTimestamp(data.current.dt);
+            this.set(
+              'weatherInfo',
+              `Current Temperature: ${temperature}°C, Time: ${currentDateTime}`
+            );
+          })
+          .catch((err) => {
+            console.error('Error fetching weather data: ', err);
+            this.set('weatherInfo', 'Error fetching data.');
+          })
+          .finally(() => {
+            console.log('Loading Weather: Finished');
+            this.loadingIndicator.hide();
+          });
       })
-      .catch((err) => {
-        console.error("Error fetching weather data: ", err);
-        this.set('weatherInfo', 'Error fetching data.');
-      })
-      .finally(() => {
-        console.log("Loading Weather: Finished");
+      .catch((e) => {
+        console.error('Geolocation error: ', e);
         this.loadingIndicator.hide();
       });
-    })
-    .catch(e => {
-      console.error("Geolocation error: ", e);
-      this.loadingIndicator.hide();
-    });
   }
 
   onLocationCheckTap() {
-    console.log("Location Check Tapped");
+    console.log('Location Check Tapped');
     this.showSearchLocationPage();
     this.highlightLocationCheck();
   }
-  
+
   onMainPageTap() {
-    console.log("Main Page Tapped");
+    console.log('Main Page Tapped');
     this.showMainPage();
     this.unhighlightAll();
   }
 
   onSettingsTap() {
-    console.log("Settings Tapped");
+    console.log('Settings Tapped');
     this.showSettingsPage();
     this.highlightSettings();
   }
 
   showMainPage() {
-    this.set("mainPageVisible", "visible");
-    this.set("searchLocationVisible", "collapsed");
-    this.set("settingsLocationVisible", "collapsed");
+    this.set('mainPageVisible', 'visible');
+    this.set('searchLocationVisible', 'collapsed');
+    this.set('settingsLocationVisible', 'collapsed');
   }
 
   showSearchLocationPage() {
-    console.log("Showing Settings Page");
-    this.set("mainPageVisible", "collapsed");
-    this.set("searchLocationVisible", "visible");
-    this.set("settingsLocationVisible", "collapsed");
+    console.log('Showing Settings Page');
+    this.set('mainPageVisible', 'collapsed');
+    this.set('searchLocationVisible', 'visible');
+    this.set('settingsLocationVisible', 'collapsed');
   }
 
   showSettingsPage() {
-    this.set("mainPageVisible", "collapsed");
-    this.set("searchLocationVisible", "collapsed");
-    this.set("settingsLocationVisible", "visible");
+    this.set('mainPageVisible', 'collapsed');
+    this.set('searchLocationVisible', 'collapsed');
+    this.set('settingsLocationVisible', 'visible');
   }
 
   unhighlightAll() {
-    this.set("locationCheckBgColor", "transparent");
-    this.set("settingsBgColor", "transparent");
+    this.set('locationCheckBgColor', 'transparent');
+    this.set('settingsBgColor', 'transparent');
   }
 
   highlightLocationCheck() {
-    this.set("locationCheckBgColor", "gray");
-    this.set("settingsBgColor", "transparent");
+    this.set('locationCheckBgColor', 'gray');
+    this.set('settingsBgColor', 'transparent');
   }
 
   // Method to highlight Settings icon
   highlightSettings() {
-    this.set("locationCheckBgColor", "transparent");
-    this.set("settingsBgColor", "gray");
+    this.set('locationCheckBgColor', 'transparent');
+    this.set('settingsBgColor', 'gray');
   }
 }
