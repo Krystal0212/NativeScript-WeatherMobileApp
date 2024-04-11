@@ -1,0 +1,11 @@
+.circle {
+    width: 800px;
+    height: 800px;
+    border-radius: 150;
+    background-color: white;
+}
+
+.text {
+    margin-top: 15%;
+    text-align: center;
+}
