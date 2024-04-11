@@ -9,9 +9,9 @@
         <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="45%">
             <StackLayout row="1" col="0" verticalAlignment="top" marginTop="30%" horizontalAlignment="center">
                 <ScrollView orientation="horizontal" row="1" col="0" width="100%" height="100%">
-                    <StackLayout orientation="horizontal" width="400%" height="50%">
+                    <StackLayout orientation="horizontal" width="250%" height="50%">
                         <!-- Page 1 -->
-                        <StackLayout width="20%">
+                        <StackLayout width="20%" backgroundColor="red">
                             <Label text="Item 1" />
                             <Label text="Item 2" />
                             <Label text="Item 3" />
@@ -19,7 +19,7 @@
                             <Label text="Item 5" />
                         </StackLayout>
                         <!-- Page 2 -->
-                        <StackLayout width="20%">
+                        <StackLayout width="20%" backgroundColor="blue">
                             <Label text="Item 6" />
                             <Label text="Item 7" />
                             <Label text="Item 8" />
@@ -27,7 +27,7 @@
                             <Label text="Item 10" />
                         </StackLayout>
 
-                        <StackLayout width="20%">
+                        <StackLayout width="20%" backgroundColor="green">
                             <Label text="Item 11" />
                             <Label text="Item 12" />
                             <Label text="Item 13" />
@@ -35,7 +35,7 @@
                             <Label text="Item 15" />
                         </StackLayout>
 
-                        <StackLayout width="20%">
+                        <StackLayout width="20%" backgroundColor="yellow">
                             <Label text="Item 16" />
                             <Label text="Item 17" />
                             <Label text="Item 18" />
@@ -43,7 +43,7 @@
                             <Label text="Item 20" />
                         </StackLayout>
 
-                        <StackLayout width="20%">
+                        <StackLayout width="20%" backgroundColor="pink">
                             <Label text="Item 21" />
                             <Label text="Item 22" />
                             <Label text="Item 23" />
