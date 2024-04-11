@@ -9,7 +9,8 @@
     "@nativescript-community/ui-svg": "^0.1.33",
     "@nativescript/core": "~8.5.0",
     "@nativescript/geolocation": "^8.3.1",
-    "@nativescript/theme": "~3.0.2"
+    "@nativescript/theme": "~3.0.2",
+    "@nstudio/nativescript-loading-indicator": "^4.3.4"
   },
   "devDependencies": {
     "@nativescript/preview-cli": "^1.0.13",
