@@ -1,4 +1,4 @@
-<GridLayout row="1" columns="*,*,*" height="80">
+<GridLayout row="1" columns="*,*,*" height="80" backgroundColor="#18848e">
     <StackLayout col="0" marginTop="5"  tap="{{ onLocationCheckTap }}" backgroundColor="{{ locationCheckBgColor }}">
         <Image src="~/assets/search-location.png" width="28" height="38"></Image>
         <Label text="Location Check" textAlignment="center" fontSize="10"></Label>

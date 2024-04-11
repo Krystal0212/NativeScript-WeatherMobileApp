@@ -1,28 +1,34 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd"
- xmlns:navBar='PageLayout/BottomNav'
-    xmlns:tabs='PageLayout/Tabs'
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:nav="PageLayout/BottomNav"
+    xmlns:tab="PageLayout/Tabs"
     navigatingTo="onNavigatingTo">
-
-    <ActionBar backgroundColor="#28a99e">
+    
+    <ActionBar title="{{ titleName }}" backgroundColor="#18848e" style="color: white; font-size: 17px">
         <ActionItem>
-            <Image src="~/assets/battery-status/half-battery.png" width="28" height="38" />
+            <Label text="{{ batteryLevel }}" style="color: white; font-size: 17px;" />
+        </ActionItem>
+        <ActionItem>
+            <Image src="{{ iconPath }}" width="38" height="38" />
         </ActionItem>
         <ActionItem>
             <Image src="" width="12"/>
         </ActionItem>
     </ActionBar>
-    <GridLayout backgroundColor="#000">
-            <GridLayout rows="*,auto" backgroundColor="#ccc">
-                <!-- Navigation Pages -->
-            <tabs:leftTab/>
-            <tabs:midTab/>
-            <tabs:rightTab/>
+    
+    <GridLayout backgroundColor="#ccc">
+        <GridLayout rows="*,auto" >
+
+            <!-- Navigation Pages -->
+            <tab:midTab/>
+            <tab:leftTab/>
+            <tab:rightTab/>
+
             <!-- Navigation Bar -->
-            <navBar:Nav/>
-                </GridLayout>
+            <nav:Nav/>
+        </GridLayout>
 
         <!-- Floating Main Button -->
-        <GridLayout borderRadius="50%" width="85" height="85" backgroundColor="#000"
+        <GridLayout borderRadius="50%" width="85" height="85" backgroundColor="#ffffff"
             verticalAlignment="bottom" horizontalAlignment="center" marginBottom="35" tap="{{ onMainPageTap }}">
             <Image src="~/assets/hsr.png" stretch="aspectFill" 
                 verticalAlignment="center" horizontalAlignment="center"></Image>

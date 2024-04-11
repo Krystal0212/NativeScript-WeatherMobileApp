@@ -1,0 +1,21 @@
+.circle {
+    width: 800px;
+    height: 800px;
+    border-radius: 150;
+    background-color: white;
+}
+
+.main-icon {
+    width: 300px;
+    height: 300px;
+    margin-top: 15%;
+}
+
+label {
+    color: #000;
+}
+
+.text-centered {
+    text-align: center;
+    margin-top: 5%;
+}

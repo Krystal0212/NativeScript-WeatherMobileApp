@@ -1,9 +1,67 @@
-<StackLayout id="toggleLayout" backgroundColor="#28a99e" verticalAlignment="middle" horizontalAlignment="center">
-    <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="100%">
-        <Image src="~/assets/rainsky.gif" animated="true" stretch="aspectFit" row="0" col="0" marginBottom="70%"/>
-        <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="80%" marginTop="20%">
-            <!-- <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="200" /> -->
-            <Label  text="text here askdjhnaoldjanljdkawndolkjawbdnoiajwhdnlakdnalwkjdnawlkdjnaklsdnmlkwhbkad" class="text" textWrap="true" width="200" />
+<StackLayout id="toggleLayout" backgroundColor="#ccc" verticalAlignment="middle" horizontalAlignment="center"> 
+    <GridLayout backgroundColor="white" width="100%" height="100%">
+        <!-- First GridLayout -->
+        <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="100%">
+            <Image src="~/assets/rainsky.gif" animated="true" stretch="aspectFit" row="0" col="0"/>
         </GridLayout>
+
+        <!-- Second GridLayout -->
+        <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="45%">
+            <StackLayout row="1" col="0" verticalAlignment="top" marginTop="30%" horizontalAlignment="center">
+                <ScrollView orientation="horizontal" row="1" col="0" width="100%" height="100%">
+                    <StackLayout orientation="horizontal" width="250%" height="50%">
+                        <!-- Page 1 -->
+                        <StackLayout width="20%" backgroundColor="red">
+                            <Label text="Item 1" />
+                            <Label text="Item 2" />
+                            <Label text="Item 3" />
+                            <Label text="Item 4" />
+                            <Label text="Item 5" />
+                        </StackLayout>
+                        <!-- Page 2 -->
+                        <StackLayout width="20%" backgroundColor="blue">
+                            <Label text="Item 6" />
+                            <Label text="Item 7" />
+                            <Label text="Item 8" />
+                            <Label text="Item 9" />
+                            <Label text="Item 10" />
+                        </StackLayout>
+
+                        <StackLayout width="20%" backgroundColor="green">
+                            <Label text="Item 11" />
+                            <Label text="Item 12" />
+                            <Label text="Item 13" />
+                            <Label text="Item 14" />
+                            <Label text="Item 15" />
+                        </StackLayout>
+
+                        <StackLayout width="20%" backgroundColor="yellow">
+                            <Label text="Item 16" />
+                            <Label text="Item 17" />
+                            <Label text="Item 18" />
+                            <Label text="Item 19" />
+                            <Label text="Item 20" />
+                        </StackLayout>
+
+                        <StackLayout width="20%" backgroundColor="pink">
+                            <Label text="Item 21" />
+                            <Label text="Item 22" />
+                            <Label text="Item 23" />
+                            <Label text="Item 24" />
+                            <Label text="Item 25" />
+                        </StackLayout>
+
+                        <!-- Add more pages as needed -->
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout rows="auto, *" columns="*" marginTop="12%" verticalAlignment="top" horizontalAlignment="center">
+            <StackLayout class="circle" >
+                <Image src="~/assets/stormy-icon.png" class="main-icon" row="0" col="0"/>
+                <Label text="Mưa rào" class="text-centered h1" textWrap="true" width="200" color="black"/>
+            </StackLayout>
+        </StackLayout>
     </GridLayout>
 </StackLayout>
