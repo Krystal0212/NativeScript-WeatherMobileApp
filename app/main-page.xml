@@ -1,8 +1,6 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd"
- xmlns:nav="PageLayout/BottomNav"
- xmlns:tab="PageLayout/Tabs"
- xmlns:Gif="nativescript-gif"
- loaded="pageLoaded"
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:nav="PageLayout/BottomNav"
+    xmlns:tab="PageLayout/Tabs"
     navigatingTo="onNavigatingTo">
     
     <ActionBar title="{{ titleName }}" backgroundColor="#18848e" style="color: white; font-size: 17px">
@@ -21,20 +19,20 @@
         <GridLayout rows="*,auto" >
 
             <!-- Navigation Pages -->
-            <tab:midTabs/>
-            <tab:leftTabs/>
-        <tab:rightTabs/>
-        
-        <!-- Navigation Bar -->
-        <nav:Nav/>
-    </GridLayout>
+            <tab:midTab/>
+            <tab:leftTab/>
+            <tab:rightTab/>
+
+            <!-- Navigation Bar -->
+            <nav:Nav/>
+        </GridLayout>
 
         <!-- Floating Main Button -->
-    <GridLayout borderRadius="50%" width="85" height="85" backgroundColor="#ffffff"
-        verticalAlignment="bottom" horizontalAlignment="center" marginBottom="35" tap="{{ onMainPageTap }}">
-        <Image src="~/assets/hsr.png" stretch="aspectFill" 
-            verticalAlignment="center" horizontalAlignment="center"></Image>
-    </GridLayout>
+        <GridLayout borderRadius="50%" width="85" height="85" backgroundColor="#ffffff"
+            verticalAlignment="bottom" horizontalAlignment="center" marginBottom="35" tap="{{ onMainPageTap }}">
+            <Image src="~/assets/hsr.png" stretch="aspectFill" 
+                verticalAlignment="center" horizontalAlignment="center"></Image>
+        </GridLayout>
 
     </GridLayout>
 </Page>

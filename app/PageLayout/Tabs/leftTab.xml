@@ -1,4 +1,4 @@
-<GridLayout id="searchLocationPage" backgroundColor="#03396c" visibility="{{ searchLocationVisible }}" rows="auto, *" columns="*">
+<GridLayout id="searchLocationPage" backgroundColor="#b3cef1" visibility="{{ searchLocationVisible }}" rows="auto, *" columns="*">
     <!-- Button in the first row -->
     <Button row="0" col="0" text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
 

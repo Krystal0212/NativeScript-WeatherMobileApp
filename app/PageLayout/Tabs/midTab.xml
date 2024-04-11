@@ -1,14 +1,12 @@
 <StackLayout id="toggleLayout" backgroundColor="#ccc" verticalAlignment="middle" horizontalAlignment="center"> 
     <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="100%">
-        <Gif [headers]="headersJSON" src="~/assets/rainsky.gif" height="100" ></Gif>
-        <Gif src="~/assets/rainsky.gif" height="200" ></Gif>
         <Image src="~/assets/rainsky.gif" animated="true" stretch="aspectFit" row="0" col="0" marginBottom="70%"/>
         <GridLayout rows="auto, *" backgroundColor="white" width="100%" height="80%" marginTop="20%">
             <!-- <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="250" /> -->
             <StackLayout row="1" col="0" verticalAlignment="top" horizontalAlignment="center">
-            <Label text="Mưa vãi lồn" class="text h1" textWrap="true" width="200" color="black"/>
-            <Label text="thời tiết hôm nay như con cặc vậy, đừng ra đường nhe mấy con đĩ" class="text" textWrap="true" width="200" color="black"/>
-        </StackLayout>
+                <Label text="Mưa vãi" class="text h1" textWrap="true" width="200" color="black"/>
+                <Label text="thời tiết hôm nay vui, đừng ra đường nhe" class="text" textWrap="true" width="200" color="black"/>
+            </StackLayout>
         </GridLayout>
     </GridLayout>
 </StackLayout>

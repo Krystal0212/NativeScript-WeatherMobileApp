@@ -8,7 +8,7 @@ export class HomeViewModel extends Observable {
   constructor() {
     super();
     this.weatherInfo = '';
-this.mainPageVisible = 'visible';
+    this.mainPageVisible = 'visible';
     this.searchLocationVisible = 'collapsed';
     this.settingsLocationVisible = 'collapsed';
     this.locationCheckBgColor = 'transparent';
@@ -65,7 +65,7 @@ this.mainPageVisible = 'visible';
 
   convertUnixTimestamp(timestamp) {
     const date = new Date(timestamp * 1000);
-    
+
     const weekdays = [
       'Sunday',
       'Monday',
@@ -225,27 +225,27 @@ this.mainPageVisible = 'visible';
 
     geolocation
       .enableLocationRequest()
-    .then(() => {
-      console.log('Geolocation: Permission granted');
+      .then(() => {
+        console.log('Geolocation: Permission granted');
         geolocation
-          .getCurrentLocation({ 
-        desiredAccuracy: CoreTypes.Accuracy.high,
-        maximumAge: 5000, 
-        timeout: 20000,
+          .getCurrentLocation({
+            desiredAccuracy: CoreTypes.Accuracy.high,
+            maximumAge: 5000,
+            timeout: 20000,
           })
-      .then((data) => {
+          .then((data) => {
             console.log('Geolocation: Received location', data);
-        return { latitude: data.latitude, longitude: data.longitude };
-      })
-      .then((location) => {
-        const lat = location.latitude; // Latitude
-        const lon = location.longitude; // Longitude
-console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
-        const apiKey = '672346e591b20d5d0b1e99dc21df440e'; // API Key
-        
-        return fetch(
-          `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
-        );
+            return { latitude: data.latitude, longitude: data.longitude };
+          })
+          .then((location) => {
+            const lat = location.latitude; // Latitude
+            const lon = location.longitude; // Longitude
+            console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
+            const apiKey = '672346e591b20d5d0b1e99dc21df440e'; // API Key
+
+            return fetch(
+              `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
+            );
           })
           .then((response) => {
             console.log('Weather data response received');
@@ -261,7 +261,7 @@ console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
               ? (data.current.temp - 273.15).toFixed(2)
               : 'N/A';
             const currentDateTime = this.convertUnixTimestamp(data.current.dt);
-                      this.set(
+            this.set(
               'weatherInfo',
               `Current Temperature: ${temperature}°C, Time: ${currentDateTime}`
             );
@@ -269,7 +269,7 @@ console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
           .catch((err) => {
             console.error('Error fetching weather data: ', err);
             this.set('weatherInfo', 'Error fetching data.');
-})
+          })
           .finally(() => {
             console.log('Loading Weather: Finished');
             this.loadingIndicator.hide();
