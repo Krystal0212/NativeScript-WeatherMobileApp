@@ -1,8 +1,8 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
-    xmlns:nav="PageLayout/BottomNav"
-    xmlns:tab="PageLayout/Tabs"
-    xmlns:Gif="nativescript-gif" 
-    loaded="pageLoaded"
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+ xmlns:nav="PageLayout/BottomNav"
+ xmlns:tab="PageLayout/Tabs"
+ xmlns:Gif="nativescript-gif"
+ loaded="pageLoaded"
     navigatingTo="onNavigatingTo">
     
     <ActionBar title="{{ titleName }}" backgroundColor="#18848e" style="color: white; font-size: 17px">
@@ -23,9 +23,9 @@
             <!-- Navigation Pages -->
             <tab:midTabs/>
             <tab:leftTabs/>
-            <tab:rightTabs/>
-
-            <!-- Navigation Bar -->
+        <tab:rightTabs/>
+        
+        <!-- Navigation Bar -->
         <nav:Nav/>
     </GridLayout>
 
