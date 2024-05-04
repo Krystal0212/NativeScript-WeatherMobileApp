@@ -20,8 +20,62 @@ export class HomeViewModel extends Observable {
     this.checkBatteryLevel();
 
     this.loadingIndicator = new LoadingIndicator();
-    this.loadingWeather();
+    this.capitalsList = [
+      { capitalName: 'London', latitude: 51.5074, longitude: -0.1278 },
+      { capitalName: 'Paris', latitude: 48.8566, longitude: 2.3522 },
+      { capitalName: 'Berlin', latitude: 52.5200, longitude: 13.4050 },
+      { capitalName: 'Tokyo', latitude: 35.6895, longitude: 139.6917 },
+      { capitalName: 'Washington D.C.', latitude: 38.9072, longitude: -77.0369 }
+    ];
+    this.onSelectCapital = this.onSelectCapital.bind(this);
+    console.log("ViewModel instantiated");
   }
+
+  onSelectCapital(args) {
+    console.log("onSelectCapital called with:", args);
+    const selectedItem = args;
+    this.selectedCapitalName = selectedItem.capitalName;
+    this.onGetWeather(selectedItem.latitude, selectedItem.longitude);
+}
+
+
+
+
+onGetWeather(latitude, longitude) {
+  console.log(`Fetching weather data for lat: ${latitude}, lon: ${longitude}`);
+  this.loadingIndicator.show(this.loadingOptions);
+
+  const apiKey = '672346e591b20d5d0b1e99dc21df440e'; 
+  const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+
+  fetch(url)
+      .then((response) => {
+          console.log("API Response:", response);
+          return response.json();
+      })
+      .then((data) => {
+        const iconCode = data.current.weather[0].icon; 
+        const iconBaseUrl = "https://openweathermap.org/img/wn/";
+        const weatherIconUrl = `${iconBaseUrl}${iconCode}@2x.png`;
+        const temperature = data.current.temp - 272.15; // K to Celsius
+        const weatherDescription = data.current.weather[0].description;
+        const humidity = data.current.humidity;
+        const windSpeed = data.current.wind_speed * 3.6;
+        const formattedWeatherInfo = `${this.selectedCapitalName}\nTemperature: ${temperature.toFixed(0)}°C\nConditions: ${weatherDescription}\nHumidity: ${humidity}%\nWind Speed: ${windSpeed.toFixed(0)} km/h`;
+        this.set('weatherInfo', formattedWeatherInfo);
+        this.set('weatherIcon', weatherIconUrl);
+    })
+      .catch((err) => {
+          console.error('Error fetching weather data:', err);
+          this.set('weatherInfo', 'Error fetching data.');
+      })
+      .finally(() => {
+          this.loadingIndicator.hide();
+          console.log('Loading Weather: Finished');
+      });
+}
+
+
 
   checkBatteryLevel() {
     if (Application.android) {
@@ -155,131 +209,7 @@ export class HomeViewModel extends Observable {
     };
   }
 
-  loadingWeather() {
-    console.log('Loading Weather');
-
-    this.loadingIndicator.show(this.loadingOptions);
-
-    geolocation
-      .enableLocationRequest()
-      .then(() => {
-        console.log('Geolocation: Permission granted');
-        geolocation
-          .getCurrentLocation({
-            desiredAccuracy: CoreTypes.Accuracy.high,
-            maximumAge: 5000,
-            timeout: 20000,
-          })
-          .then((data) => {
-            // console.log("Geolocation: Received location");
-            return { latitude: data.latitude, longitude: data.longitude };
-          })
-          .then((location) => {
-            const lat = location.latitude; // Latitude
-            const lon = location.longitude; // Longitude
-            console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
-            const apiKey = '672346e591b20d5d0b1e99dc21df440e'; // API Key
-
-            return fetch(
-              `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
-            );
-          })
-          .then((response) => {
-            // console.log("Weather data response received");
-            return response.json();
-          })
-          .then((data) => {
-            console.log('Weather data converted');
-
-            const timezone = data.timezone; // "Asia/Ho_Chi_Minh"
-            this.set('titleName', timezone.split('/').pop().replace(/_/g, ' '));
-
-            const temperature = data.current
-              ? (data.current.temp - 273.15).toFixed(2)
-              : 'N/A';
-            const currentDateTime = this.convertUnixTimestamp(data.current.dt);
-            this.set(
-              'weatherInfo',
-              `Current Temperature: ${temperature}°C\n${currentDateTime}`
-            );
-          })
-          .catch((err) => {
-            console.error('Error fetching weather data: ', err);
-            this.set('weatherInfo', 'Error fetching data.');
-          })
-          .finally(() => {
-            console.log('Loading Weather: Finished');
-            this.loadingIndicator.hide();
-          });
-      })
-      .catch((e) => {
-        console.error('Geolocation error: ', e);
-        this.loadingIndicator.hide();
-      });
-  }
-
-  onGetWeather() {
-    console.log("Getting Inserted Location's Weather");
-
-    this.loadingIndicator.show(this.loadingOptions);
-
-    geolocation
-      .enableLocationRequest()
-      .then(() => {
-        console.log('Geolocation: Permission granted');
-        geolocation
-          .getCurrentLocation({
-            desiredAccuracy: CoreTypes.Accuracy.high,
-            maximumAge: 5000,
-            timeout: 20000,
-          })
-          .then((data) => {
-            console.log('Geolocation: Received location', data);
-            return { latitude: data.latitude, longitude: data.longitude };
-          })
-          .then((location) => {
-            const lat = location.latitude; // Latitude
-            const lon = location.longitude; // Longitude
-            console.log(`Fetching weather data for lat: ${lat}, lon: ${lon}`);
-            const apiKey = '672346e591b20d5d0b1e99dc21df440e'; // API Key
-
-            return fetch(
-              `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`
-            );
-          })
-          .then((response) => {
-            console.log('Weather data response received');
-            return response.json();
-          })
-          .then((data) => {
-            console.log('Weather data processed');
-
-            const timezone = data.timezone; // "Asia/Ho_Chi_Minh"
-            this.set('titleName', timezone.split('/').pop().replace(/_/g, ' '));
-
-            const temperature = data.current
-              ? (data.current.temp - 273.15).toFixed(2)
-              : 'N/A';
-            const currentDateTime = this.convertUnixTimestamp(data.current.dt);
-            this.set(
-              'weatherInfo',
-              `Current Temperature: ${temperature}°C, Time: ${currentDateTime}`
-            );
-          })
-          .catch((err) => {
-            console.error('Error fetching weather data: ', err);
-            this.set('weatherInfo', 'Error fetching data.');
-          })
-          .finally(() => {
-            console.log('Loading Weather: Finished');
-            this.loadingIndicator.hide();
-          });
-      })
-      .catch((e) => {
-        console.error('Geolocation error: ', e);
-        this.loadingIndicator.hide();
-      });
-  }
+ 
 
   onLocationCheckTap() {
     console.log('Location Check Tapped');
@@ -306,7 +236,6 @@ export class HomeViewModel extends Observable {
   }
 
   showSearchLocationPage() {
-    console.log('Showing Settings Page');
     this.set('mainPageVisible', 'collapsed');
     this.set('searchLocationVisible', 'visible');
     this.set('settingsLocationVisible', 'collapsed');

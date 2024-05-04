@@ -1,9 +1,13 @@
-<GridLayout id="searchLocationPage" backgroundColor="#b3cef1" visibility="{{ searchLocationVisible }}" rows="auto, *" columns="*">
-    <!-- Button in the first row -->
-    <Button row="0" col="0" text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
-
-    <!-- Label in the second row, centered -->
-    <StackLayout row="1" col="0" horizontalAlignment="center" verticalAlignment="middle">
-        <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="250" horizontalAlignment="center" />
-    </StackLayout>
-</GridLayout>
+<ScrollView>
+    <GridLayout id="searchLocationPage" backgroundColor="#b3cef1" visibility="{{ searchLocationVisible }}" rows="auto, auto, auto" columns="*,*">
+        <ListView id="listViewCapitals" row="0" col="0" colSpan="2" items="{{ capitalsList }}" class="list-group">
+            <ListView.itemTemplate>
+                <StackLayout class="list-group-item" orientation="horizontal" padding="10" margin="5" backgroundColor="#ffffff" borderRadius="5">
+                    <Label text="{{ capitalName }}" horizontalAlignment="left" verticalAlignment="center" fontSize="18" color="#333333" />
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+        <Image row="1" col="0" colSpan="2" width="50" height="50" stretch="aspectFit" src="{{ weatherIcon }}" horizontalAlignment="center" verticalAlignment="center" />
+        <Label row="2" col="0" colSpan="2" text="{{ weatherInfo }}" horizontalAlignment="center" class="info-label" textWrap="true" style="padding: 10; margin: 5;" />
+    </GridLayout>
+</ScrollView>

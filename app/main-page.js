@@ -1,9 +1,16 @@
 import { HomeViewModel } from './main-view-model';
 
-function onNavigatingTo(args) {
-  console.log("Navigating to the main page.");
-  const page = args.object;
-  page.bindingContext = new HomeViewModel();
+function onPageLoaded(args) {
+  const component = args.object;
+  component.bindingContext = new HomeViewModel();
+
+  const listView = component.getViewById("listViewCapitals");
+  listView.on("itemTap", function (args) {
+      console.log("Item tapped");
+      const selectedItem = component.bindingContext.capitalsList[args.index];
+      console.log("Selected item:", selectedItem);
+      component.bindingContext.onSelectCapital(selectedItem);
+  });
 }
 
-export { onNavigatingTo };
+export { onPageLoaded };

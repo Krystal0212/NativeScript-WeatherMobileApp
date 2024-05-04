@@ -1,7 +1,7 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
     xmlns:nav="PageLayout/BottomNav"
     xmlns:tab="PageLayout/Tabs"
-    navigatingTo="onNavigatingTo">
+    loaded="onPageLoaded">
     
     <ActionBar title="{{ titleName }}" backgroundColor="#18848e" style="color: white; font-size: 17px">
         <ActionItem>
