@@ -1,8 +1,8 @@
 .circle {
-    width: 800px;
-    height: 800px;
+    width: 400px;
+    height: 400px;
     border-radius: 150;
-    background-color: white;
+    background-color: #8fe0ff;
 }
 
 .main-icon {
@@ -18,4 +18,83 @@ label {
 .text-centered {
     text-align: center;
     margin-top: 5%;
+}
+
+.compact-label {
+    color: #8A0000;            /* Ensures text color is black */
+    horizontal-align: center; /* Centers text horizontally */
+    vertical-align: middle;  /* Aligns text vertically */
+    width: 100%;             /* Makes label use full width of its container */
+    text-align: center;      /* Centers the text inside the label (CSS version) */
+    font-weight: bold;
+}
+
+.compact-label-header {
+    font-size: 18px;
+}
+
+.textProgress{
+    color: #0E1428;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.textProgressRed{
+    color: #8A0000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.textProgressBlue{
+    color: #03045E;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.textProgressDate{
+    color: #6f4e37;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.textProgressWind{
+    color: #0B4756;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.compact-label-2 {
+    color: black;            /* Ensures text color is black */
+    horizontal-align: center; /* Centers text horizontally */
+    vertical-align: middle;  /* Aligns text vertically */
+    width: 100%;             /* Makes label use full width of its container */
+    text-align: center;      /* Centers the text inside the label (CSS version) */
+    font-weight: bold;
+}
+
+.compact-label-3 {
+    color: #182C25;            /* Ensures text color is black */
+    horizontal-align: center; /* Centers text horizontally */
+    vertical-align: middle;  /* Aligns text vertically */
+    width: 100%;             /* Makes label use full width of its container */
+    text-align: center;      /* Centers the text inside the label (CSS version) */
+    font-weight: bold;
+}
+
+.compact-label-4 {
+    color: #40450C;            /* Ensures text color is black */
+    horizontal-align: center; /* Centers text horizontally */
+    vertical-align: middle;  /* Aligns text vertically */
+    width: 100%;             /* Makes label use full width of its container */
+    text-align: center;      /* Centers the text inside the label (CSS version) */
+    font-weight: bold;
+}
+
+.compact-label-5 {
+    color: #4C020F;            /* Ensures text color is black */
+    horizontal-align: center; /* Centers text horizontally */
+    vertical-align: middle;  /* Aligns text vertically */
+    width: 100%;             /* Makes label use full width of its container */
+    text-align: center;      /* Centers the text inside the label (CSS version) */
+    font-weight: bold;
 }

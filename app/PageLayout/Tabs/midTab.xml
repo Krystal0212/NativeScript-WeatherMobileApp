@@ -1,66 +1,92 @@
-<StackLayout id="toggleLayout" backgroundColor="#ccc" verticalAlignment="middle" horizontalAlignment="center"> 
+<StackLayout id="toggleLayout" backgroundColor="#9C89B8" verticalAlignment="middle" horizontalAlignment="center"> 
     <GridLayout backgroundColor="white" width="100%" height="100%">
         <!-- First GridLayout -->
         <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="100%">
-            <Image src="~/assets/rainsky.gif" animated="true" stretch="aspectFit" row="0" col="0"/>
+            <Image src="{{ weatherBackground }}" animated="true" stretch="aspectFit" row="0" col="0"/>
         </GridLayout>
 
         <!-- Second GridLayout -->
         <GridLayout rows="auto, *" columns="*" backgroundColor="white" width="100%" height="45%">
             <StackLayout row="1" col="0" verticalAlignment="top" marginTop="30%" horizontalAlignment="center">
                 <ScrollView orientation="horizontal" row="1" col="0" width="100%" height="100%">
-                    <StackLayout orientation="horizontal" width="250%" height="50%">
+                    <StackLayout orientation="horizontal" width="250%" height="100%">
                         <!-- Page 1 -->
-                        <StackLayout width="20%" backgroundColor="red">
-                            <Label text="Item 1" />
-                            <Label text="Item 2" />
-                            <Label text="Item 3" />
-                            <Label text="Item 4" />
-                            <Label text="Item 5" />
+                        <StackLayout width="20%" backgroundColor="#FF7F7F" horizontalAlignment="center" verticalAlignment="center">
+                            <Label text="{{ day1.date }}" class="compact-label compact-label-header"/>
+                            <Label text="{{ day1.temperature }}" class="compact-label"/>
+                            <Label text="{{ day1.humidity }}" class="compact-label"/>
+                            <Label text="{{ day1.windSpeed }}" class="compact-label"/>
+                            <Label text="{{ day1.description }}" class="compact-label"/>
                         </StackLayout>
+
                         <!-- Page 2 -->
-                        <StackLayout width="20%" backgroundColor="blue">
-                            <Label text="Item 6" />
-                            <Label text="Item 7" />
-                            <Label text="Item 8" />
-                            <Label text="Item 9" />
-                            <Label text="Item 10" />
+                        <StackLayout width="20%" backgroundColor="#ACC8E5" horizontalAlignment="center" verticalAlignment="center">
+                            <Label text="{{ day2.date }}" class="compact-label-2 compact-label-header"/>
+                            <Label text="{{ day2.temperature }}" class="compact-label-2"/>
+                            <Label text="{{ day2.humidity }}" class="compact-label-2"/>
+                            <Label text="{{ day2.windSpeed }}" class="compact-label-2"/>
+                            <Label text="{{ day2.description }}" class="compact-label-2"/>
                         </StackLayout>
 
-                        <StackLayout width="20%" backgroundColor="green">
-                            <Label text="Item 11" />
-                            <Label text="Item 12" />
-                            <Label text="Item 13" />
-                            <Label text="Item 14" />
-                            <Label text="Item 15" />
+                        <StackLayout width="20%" backgroundColor="#AAFFEE">
+                            <Label text="{{ day3.date }}" class="compact-label-3 "/>
+                            <Label text="{{ day3.temperature }}" class="compact-label-3 compact-label-header"/>
+                            <Label text="{{ day3.humidity }}" class="compact-label-3"/>
+                            <Label text="{{ day3.windSpeed }}" class="compact-label-3"/>
+                            <Label text="{{ day3.description }}" class="compact-label-3"/>
                         </StackLayout>
 
-                        <StackLayout width="20%" backgroundColor="yellow">
-                            <Label text="Item 16" />
-                            <Label text="Item 17" />
-                            <Label text="Item 18" />
-                            <Label text="Item 19" />
-                            <Label text="Item 20" />
+                        <StackLayout width="20%" backgroundColor="#FFFFEB">
+                            <Label text="{{ day4.date }}" class="compact-label-4 compact-label-header"/>
+                            <Label text="{{ day4.temperature }}" class="compact-label-4"/>
+                            <Label text="{{ day4.humidity }}" class="compact-label-4"/>
+                            <Label text="{{ day4.windSpeed }}" class="compact-label-4"/>
+                            <Label text="{{ day4.description }}" class="compact-label-4"/>
                         </StackLayout>
 
-                        <StackLayout width="20%" backgroundColor="pink">
-                            <Label text="Item 21" />
-                            <Label text="Item 22" />
-                            <Label text="Item 23" />
-                            <Label text="Item 24" />
-                            <Label text="Item 25" />
+                        <StackLayout width="20%" backgroundColor="#FF85FF">
+                            <Label text="{{ day5.date }}" class="compact-label-5  compact-label-header"/>
+                            <Label text="{{ day5.temperature }}" class="compact-label-5"/>
+                            <Label text="{{ day5.humidity }}" class="compact-label-5"/>
+                            <Label text="{{ day5.windSpeed }}" class="compact-label-5"/>
+                            <Label text="{{ day5.description }}" class="compact-label-5"/>
                         </StackLayout>
-
-                        <!-- Add more pages as needed -->
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
         </GridLayout>
 
+        <StackLayout orientation="horizontal" marginTop="300" width="90%">
+            <Label text="{{dateValue}}" verticalAlignment="center" width="100%" class="textProgressDate"/>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" marginTop="380" width="90%">
+            <Label text="Temperature" verticalAlignment="center" width="28%" class="textProgress"/>
+            <Label text="{{temperatureValuePercent}}" verticalAlignment="center" width="10%" class="textProgressRed"/>
+            <Progress width="65%" value= "{{temperatureValue}}" backgroundColor="#fff" color="#FF7F7F"/>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" marginTop="430" width="90%" >
+            <Label text="Humidnity" verticalAlignment="center" width="28%" class="textProgress"/>
+            <Label text="{{humidValuePercent}}" verticalAlignment="center" width="10%" class="textProgressBlue"/>
+            <Progress width="65%" value= "{{humidValue}}" backgroundColor="#fff" color="#DEF4FC"/>
+        </StackLayout>
+
+
+        <StackLayout orientation="horizontal" marginTop="480" width="90%" >
+        <Label text="Feels Like" verticalAlignment="center" width="28%" class="textProgress"/>
+            <Label text="{{feelLikeTemperatureValuePercent}}" verticalAlignment="center" width="10%" class="textProgressRed"/>
+            <Progress width="65%" value= "{{feelLikeTemperatureValue}}" backgroundColor="#fff" color="#FF7F7F"/>
+        </StackLayout>
+
+        <StackLayout orientation="horizontal" marginTop="530" width="90%" >
+            <Label text="Wind Speed" verticalAlignment="center" width="28%" class="textProgress"/>
+            <Label text="{{speedValue}}" verticalAlignment="center" width="72%" class="textProgressWind"/>
+        </StackLayout>
+
         <StackLayout rows="auto, *" columns="*" marginTop="12%" verticalAlignment="top" horizontalAlignment="center">
             <StackLayout class="circle" >
-                <Image src="~/assets/stormy-icon.png" class="main-icon" row="0" col="0"/>
-                <Label text="Mưa rào" class="text-centered h1" textWrap="true" width="200" color="black"/>
+                <Image src="{{weatherIcon}}" class="main-icon" row="0" col="0"/>
             </StackLayout>
         </StackLayout>
     </GridLayout>

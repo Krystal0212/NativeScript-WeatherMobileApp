@@ -8,6 +8,6 @@
     </StackLayout>
     <StackLayout col="2" tap="{{ onSettingsTap }}" backgroundColor="{{ settingsBgColor }}" verticalAlignment="middle" horizontalAlignment="center" width="140" height="80">
         <Image src="~/assets/settings.png" width="28" height="38"></Image>
-        <Label text="Settings" textAlignment="center" fontSize="10"></Label>
+        <Label text="Caculate" textAlignment="center" fontSize="10"></Label>
     </StackLayout>
 </GridLayout>
