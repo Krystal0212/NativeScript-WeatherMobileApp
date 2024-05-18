@@ -1,7 +1,7 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
     xmlns:nav="PageLayout/BottomNav"
     xmlns:tab="PageLayout/Tabs"
-    navigatingTo="onNavigatingTo">
+    loaded="onPageLoaded">
     
     <ActionBar title="{{ titleName }}" backgroundColor="#18848e" style="color: white; font-size: 17px">
         <ActionItem>
@@ -30,7 +30,7 @@
         <!-- Floating Main Button -->
         <GridLayout borderRadius="50%" width="85" height="85" backgroundColor="#ffffff"
             verticalAlignment="bottom" horizontalAlignment="center" marginBottom="35" tap="{{ onMainPageTap }}">
-            <Image src="~/assets/hsr.png" stretch="aspectFill" 
+            <Image src="~/assets/circle.png" stretch="aspectFill" 
                 verticalAlignment="center" horizontalAlignment="center"></Image>
         </GridLayout>
 

@@ -1,3 +1,12 @@
-<StackLayout id="settingLocationPage" backgroundColor="#fff"  visibility="{{ settingsLocationVisible }}">
-    <!-- Right Page -->
+<StackLayout id="settingLocationPage" backgroundColor="#fff" visibility="{{ settingsLocationVisible }}" horizontalAlignment="center" width="100%">
+    <StackLayout backgroundColor="white" padding="10" verticalAlignment="center">
+        <Label text="Celsius Temperature" horizontalAlignment="center" />
+        <TextField hint="Enter temperature in Celsius" keyboardType="number"
+                   text="{{ celsiusTemperature }}" color="#000" />
+    </StackLayout>
+    <StackLayout backgroundColor="white" padding="10" verticalAlignment="center">
+        <Label text="Fahrenheit Temperature" horizontalAlignment="center" />
+        <TextField hint="Temperature in Fahrenheit" editable="false"
+                   text="{{ fahrenheitTemperature }}" color="#000"/>
+    </StackLayout>
 </StackLayout>

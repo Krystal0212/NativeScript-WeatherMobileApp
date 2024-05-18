@@ -1,4 +1,15 @@
-<StackLayout id="searchLocationPage" backgroundColor="#03396c"  visibility="{{ searchLocationVisible }}">
-    <Button text="Get Weather" tap="{{ onGetWeather }}" class="btn btn-primary btn-active" />
-    <Label id="weatherInfo" text="{{ weatherInfo }}" class="info-label" textWrap="true" width="200" />
-</StackLayout>
+<ScrollView>
+    <GridLayout id="searchLocationPage" backgroundColor="#b3cef1" visibility="{{ searchLocationVisible }}" rows="*, auto, auto" columns="*,*">
+        <!-- ListView occupying the majority of the vertical space -->
+        <ListView id="listViewCapitals" row="0" col="0" colSpan="2" items="{{ capitalsList }}" class="list-group" height="290">
+            <ListView.itemTemplate>
+                <StackLayout class="list-group-item" orientation="horizontal" padding="10" margin="5" backgroundColor="#ffffff" borderRadius="5">
+                    <Label text="{{ capitalName }}" horizontalAlignment="left" verticalAlignment="center" fontSize="18" color="#333333" />
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+        <!-- Image and Label take up only needed space -->
+        <Image row="1" col="0" colSpan="2" width="50" height="50" stretch="aspectFit" src="{{ weatherIconL }}" horizontalAlignment="center" verticalAlignment="center" />
+        <Label row="2" col="0" colSpan="2" text="{{ weatherInfo }}" horizontalAlignment="center" class="info-label" textWrap="true" style="padding: 10; margin: 5;" />
+    </GridLayout>
+</ScrollView>
